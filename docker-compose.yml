@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres-bonus2
+    ports:
+      - "5029:5432"
+    environment:
+      POSTGRES_DB: new_employee_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: aadmin123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    build: ./Backend
+    container_name: Backend-bonus2
+    ports:
+      - "3062:3062"
+    environment:
+      - DB_HOST=postgres
+      - DB_USER=postgres
+      - DB_PASSWORD=aadmin123
+      - DB_NAME=new_employee_db
+      - DB_PORT=5432
+      - PORT=3062
+    depends_on:
+      - postgres
+
+  frontend:
+    build: ./Frontend
+    container_name: Frontend-bonus2
+    ports:
+      - "8087:80"
+
+  hr_page:
+    build: ./Hr_page
+    container_name: Hr_page-bonus2
+    ports:
+      - "8088:80"
+
+volumes:
+  postgres_data:
+
