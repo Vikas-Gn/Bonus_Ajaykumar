@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3062;
+const port = process.env.PORT || 3099;
 
 // Middleware - simplified CORS configuration
 app.use(cors());
@@ -178,7 +178,7 @@ app.get('/health', (req, res) => {
 
 // Start server
 app.listen(port, () => {
-  console.log(`Server running on http://43.205.129.17:${port}`);
+  console.log(`Server running on http://13.234.213.40:${port}`);
 });
 
 process.on('unhandledRejection', (err) => {
