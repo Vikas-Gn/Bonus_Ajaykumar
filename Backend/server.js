@@ -178,7 +178,7 @@ app.get('/health', (req, res) => {
 
 // Start server
 app.listen(port, () => {
-  console.log(`Server running on http://13.234.213.40:${port}`);
+  console.log(`Server running on http://65.2.191.52:${port}`);
 });
 
 process.on('unhandledRejection', (err) => {
